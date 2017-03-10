@@ -27,6 +27,7 @@ public class CsharpNetStandardClientCodegen extends AbstractCSharpCodegen {
     protected String modelDocPath = "docs/";
 
     protected String targetFrameworkNuget = "netstandard1.3";
+    protected boolean supportsAsync = Boolean.TRUE;
     protected Map<Character, String> regexModifiers;
 
     // By default, generated code is considered public
@@ -151,6 +152,8 @@ public class CsharpNetStandardClientCodegen extends AbstractCSharpCodegen {
         additionalProperties.put("clientPackage", clientPackage);
 
         additionalProperties.put("emitDefaultValue", optionalEmitDefaultValue);
+
+        additionalProperties.put("supportsAsync", this.supportsAsync);
 
         additionalProperties.put("targetFrameworkNuget", this.targetFrameworkNuget);
 
@@ -469,6 +472,10 @@ public class CsharpNetStandardClientCodegen extends AbstractCSharpCodegen {
 
     public void setTargetFrameworkNuget(String targetFrameworkNuget) {
         this.targetFrameworkNuget = targetFrameworkNuget;
+    }
+
+    public void setSupportsAsync(Boolean supportsAsync){
+        this.supportsAsync = supportsAsync;
     }
 
     public boolean isNonPublicApi() {
